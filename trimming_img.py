@@ -46,7 +46,7 @@ def cut_out_rectangle(img_src, left_x, upper_y, right_x, lower_y):
 if __name__ == '__main__':
 
     # files = pd.read_csv(config.FILES_LIST, header=None, names=['No',  'File name'])
-    files = pd.read_csv(config.FILES_LIST, header=None)
+    files = pd.read_csv(config.FILES_LIST, header=None, encoding = "shift-jis")
     if len(files.columns) == 2:
         # files.columns = ['No',  'File name']
         input_fnames = files.iloc[:, 1]
@@ -102,7 +102,9 @@ if __name__ == '__main__':
         cv2.imwrite(fname_dst, img_dst)
         output_img_list.append(fname_dst)
 
-    if config.CONVERT_TO_PDF:
+    if config.CONVERT_TO_PDF and config.MODE != 'test':
         fname_pdf = f'{output_dir}/{config.FNAME_BASE}.pdf'
+        print('')
+        print (f'PDFファイル作成：{fname_pdf}')
         with open(fname_pdf,'wb') as f:
             f.write(img2pdf.convert(output_img_list))
