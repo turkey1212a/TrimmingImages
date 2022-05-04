@@ -70,7 +70,7 @@ if __name__ == '__main__':
 
     output_img_list = []
     for file_no in range(files_num):
-        print(f'[#{file_no}]]')
+        print(f'[#{file_no}]')
         fname_src = f'{config.INPUT_DIR}/{input_fnames[file_no]}'
         fname_dst = f'{output_dir}/{config.FNAME_BASE}_{suffixes[file_no]:03}.png'
         print(f'input  : [{fname_src}]')
@@ -103,7 +103,7 @@ if __name__ == '__main__':
         output_img_list.append(fname_dst)
 
     if config.CONVERT_TO_PDF and config.MODE != 'test':
-        fname_pdf = f'{output_dir}/{config.FNAME_BASE}.pdf'
+        fname_pdf = f'{config.PARENT_DIR}/{config.TITLE}/{config.FNAME_BASE}.pdf'
         print('')
         print (f'PDFファイル作成：{fname_pdf}')
         with open(fname_pdf,'wb') as f:
